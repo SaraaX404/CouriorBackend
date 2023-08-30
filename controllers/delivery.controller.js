@@ -18,9 +18,42 @@ exports.IndexController = (req,res) => {
 
   }
 
+exports.CharnController = (req,res) =>{
+  db.query("SELECT * FROM customer_charn WHERE id = 1", (err, result) => {
+    console.log(result)
+    if (err) throw err;
+    res.status(200).json({data:[
+      {
+        id: 1,
+        sender_name: 'John Doe',
+        sender_address: '123 Main St',
+        province: 'California',
+        last_item: 'Widget',
+        feedback: 'Great service!',
+        charn_status: 1,
+        action: 'Follow up',
+        item_type: 'Electronics',
+        item_status: 'OnTime'
+      },
+      {
+        id: 2,
+        sender_name: 'Jane Smith',
+        sender_address: '456 Elm St',
+        province: 'New York',
+        last_item: 'Gadget',
+        feedback: 'Satisfied customer',
+        charn_status: 2,
+        action: 'Resolve',
+        item_type: 'Accessories',
+        item_status: 'OnTime'
+      }
+    ]})
+})
+}
+
 
   exports.IndexUpdateController = (req,res) => {
-
+      
     console.log(req.body)
     console.log(req.params)
 
